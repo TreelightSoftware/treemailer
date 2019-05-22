@@ -14,3 +14,5 @@ As of this moment, you **must** hardcode your keys in the `mailer/main.go` file.
 * `mgKey`: The secret key for Mailgun
 
 * `siteName`: A user-friendly sitename that is added to the subject
+
+* `cc`: An additional `to` address to cc on all emails; useful for logging

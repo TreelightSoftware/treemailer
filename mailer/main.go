@@ -16,6 +16,7 @@ const (
 	mgDomain string = ""
 	mgKey    string = ""
 	siteName string = ""
+	cc       string = ""
 )
 
 var _sanitizer *bluemonday.Policy
@@ -86,7 +87,9 @@ func Handler(request events.APIGatewayProxyRequest) (events.APIGatewayProxyRespo
 		subject,
 		body)
 	m.AddRecipient(to)
-	m.AddCC("kevin.eaton@kvsstechnologies.com")
+	if cc != "" {
+		m.AddCC(cc)
+	}
 	m.SetReplyTo(input.Email)
 
 	_, _, err = mg.Send(m)
