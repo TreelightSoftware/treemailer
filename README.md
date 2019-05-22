@@ -16,3 +16,13 @@ As of this moment, you **must** hardcode your keys in the `mailer/main.go` file.
 * `siteName`: A user-friendly sitename that is added to the subject
 
 * `cc`: An additional `to` address to cc on all emails; useful for logging
+
+### Serverless
+
+This application assumes you are using Serverless for your FaaS framework. You will want to init a new serverless directory and then create these files in that directory.
+
+## Deploying
+
+If you have a serverless setup, you can run the following:
+
+`make && serverless deploy`
