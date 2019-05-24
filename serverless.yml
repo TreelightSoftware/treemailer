@@ -12,7 +12,7 @@ package:
    - ./bin/**
 
 functions:
-  hello:
+  send:
     handler: bin/mailer
     events:
       - http:
