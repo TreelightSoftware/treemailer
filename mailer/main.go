@@ -5,6 +5,7 @@ import (
 	"errors"
 	"fmt"
 	"net/http"
+	"os"
 
 	"github.com/aws/aws-lambda-go/events"
 	"github.com/aws/aws-lambda-go/lambda"
@@ -12,14 +13,13 @@ import (
 	"github.com/microcosm-cc/bluemonday"
 )
 
-// Set these as you see fit
-// a good task would be to break these into environment variables
-const (
-	to       string = ""
-	mgDomain string = ""
-	mgKey    string = ""
-	siteName string = ""
-	cc       string = ""
+// Set these as you see fit either here or in the environment
+var (
+	to       string
+	mgDomain string
+	mgKey    string
+	siteName string
+	cc       string
 )
 
 var _sanitizer *bluemonday.Policy
@@ -89,6 +89,9 @@ func sendSuccess(retStruct interface{}) (events.APIGatewayProxyResponse, error) 
 
 // sendMail sends the mail and returns information about the message from mailgun
 func sendMail(to, from, cc, subject, body string) (string, string, error) {
+	if mgDomain == "" || mgKey == "" {
+		return "", "", errors.New("mailgun not configured")
+	}
 	mg := mailgun.NewMailgun(mgDomain, mgKey)
 	message := mg.NewMessage(
 		from,
@@ -118,7 +121,7 @@ func generateText(input *MailerInput) (subject, body string, err error) {
 		return
 	}
 
-	body = fmt.Sprintf("Hello!\nYou have received the following contact \nName: %s\n Email: %s\n Subject: %s\n %s", input.Name, input.Email, input.Subject, input.Body)
+	body = fmt.Sprintf("Hello!\nYou have received the following contact \nName: %s\nEmail: %s\nSubject: %s\n\n%s\n", input.Name, input.Email, input.Subject, input.Body)
 	if input.OtherData != nil {
 		for k, v := range input.OtherData {
 			body = fmt.Sprintf("%s\n%s: %v", body, sanitize(k), sanitize(v))
@@ -131,6 +134,25 @@ func generateText(input *MailerInput) (subject, body string, err error) {
 
 // sanitize uses the sanitizer to make sure the text is clear of various bad things
 func sanitize(input string) string {
+	if _sanitizer == nil {
+		_sanitizer = bluemonday.StrictPolicy()
+	}
 	clean := _sanitizer.Sanitize(input)
 	return clean
+}
+
+func envHelper(variable, defaultValue string) string {
+	found := os.Getenv(variable)
+	if found == "" {
+		found = defaultValue
+	}
+	return found
+}
+
+func init() {
+	to = envHelper("TREEMAILER_TO", to)
+	mgDomain = envHelper("TREEMAILER_MG_DOMAIN", mgDomain)
+	mgKey = envHelper("TREEMAILER_MG_KEY", mgKey)
+	siteName = envHelper("TREEMAILER_SITE_NAME", siteName)
+	cc = envHelper("TREEMAILER_CC", cc)
 }
