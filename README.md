@@ -1,5 +1,9 @@
 # TreeMailer
 
+[![CircleCI](https://circleci.com/gh/TreelightSoftware/treemailer/tree/master.svg?style=svg)](https://circleci.com/gh/TreelightSoftware/treemailer/tree/master)
+
+[![codecov](https://codecov.io/gh/TreelightSoftware/treemailer/branch/master/graph/badge.svg)](https://codecov.io/gh/TreelightSoftware/treemailer)
+
 TreeMailer is a simple Go-based AWS Lambda tool powered by Serverless to provide a simple backend for form contact requests, such as in portfolios. This application sets up an AWS
 ( or your choice of FaaS provider) to take in some JSON, generate an email, and send it with MailGun.
 
