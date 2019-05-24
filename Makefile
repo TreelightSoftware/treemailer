@@ -9,3 +9,9 @@ clean:
 
 deploy: clean build
 	sls deploy --verbose
+
+test:
+	go test ./mailer/
+
+cover:
+	go test -v -coverprofile=coverage.out ./mailer && go tool cover -html=coverage.out -o coverage.html
