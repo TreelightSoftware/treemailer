@@ -49,7 +49,7 @@ Many automated tools search the form for fields convenitently `name` or `id` = `
 
 ## Testing
 
-We use the [Assert](https://github.com/stretchr/testify/assert) library for testing. We try to keep our test coverage high, but there is always room for improvement.
+We use the [Assert](https://github.com/stretchr/testify) library for testing. We try to keep our test coverage high, but there is always room for improvement.
 
 To run the tests, you can use `make test` or `make cover`.
 
