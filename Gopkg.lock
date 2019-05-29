@@ -14,6 +14,12 @@
   version = "v1.10.0"
 
 [[projects]]
+  name = "github.com/davecgh/go-spew"
+  packages = ["spew"]
+  revision = "8991bc29aa16c548c550c7ff78260e27b9ab7c73"
+  version = "v1.1.1"
+
+[[projects]]
   name = "github.com/gobuffalo/envy"
   packages = ["."]
   revision = "043cb4b8af871b49563291e32c66bb84378a60ac"
@@ -44,6 +50,12 @@
   revision = "27936f6d90f9c8e1145f11ed52ffffbfdb9e0af7"
 
 [[projects]]
+  name = "github.com/pmezard/go-difflib"
+  packages = ["difflib"]
+  revision = "792786c7400a136282c1664665ae0a8db921c6c2"
+  version = "v1.0.0"
+
+[[projects]]
   name = "github.com/rogpeppe/go-internal"
   packages = [
     "modfile",
@@ -51,6 +63,12 @@
     "semver"
   ]
   revision = "438578804ca6f31be148c27683afc419ce47c06e"
+  version = "v1.3.0"
+
+[[projects]]
+  name = "github.com/stretchr/testify"
+  packages = ["assert"]
+  revision = "ffdc059bfe9ce6a4e144ba849dbedead332c6053"
   version = "v1.3.0"
 
 [[projects]]
@@ -65,6 +83,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "bf79ed8112292e1772f4de773c4722205118f26cf506ea752b4ce3547e146976"
+  inputs-digest = "3f1a91ad8134866e1a23664e83240c22efce2459e7faa18d5c524b7c1601d644"
   solver-name = "gps-cdcl"
   solver-version = 1

@@ -21,7 +21,7 @@ Global variables are used to setup the configuration. You can provide these eith
 
 * `mgKey`
   * The secret key for Mailgun
-  * `TREEMAILER_MG_KE` is the environment variable
+  * `TREEMAILER_MG_KEY` is the environment variable
 
 * `siteName`
   * A user-friendly sitename that is added to the subject
@@ -40,6 +40,12 @@ This application assumes you are using Serverless for your FaaS framework. You w
 If you have a serverless setup, you can run the following:
 
 `make && serverless deploy`
+
+### Note on Security and SPAM
+
+Currently, we do not require a CAPTCHA, although that feature is planned. Another alternative or addition is input field checking.
+
+Many automated tools search the form for fields convenitently `name` or `id` = `email` or the such. So we recommend you include a CSS-hidden form field with the name and id of email, with the real email address being stored in a field with a non-obvious name (probably best to not have the world email in there). When the button is clicked and the script prepares to send the JSON, check if there is a value in the hidden field. If there is, it's usually safe to assume it was filled in with a script (most users likely won't unhide a field in CSS and fill it in). Of course, other mitigation techniques are welcome, and if you have other best practices, feel free to open a PR with them in the README or another file.
 
 ## Testing
 
