@@ -57,7 +57,7 @@ If you have a serverless setup, you can run the following:
 
 Currently, we do not require a CAPTCHA, although that feature is planned. Another alternative or addition is input field checking.
 
-Many automated tools search the form for fields conveniently containing `name` or `id` of `email` or similar in the `input` tags. So we recommend you include a CSS-hidden form field with the name and id of email, with the real email address being stored in a field with a non-obvious name (probably best to not have the world email in there). When the button is clicked and the script prepares to send the JSON, check if there is a value in the hidden field. If there is, it's usually safe to assume it was filled in with a script (most users likely won't unhide a field in CSS and fill it in). Of course, other mitigation techniques are welcome, and if you have other best practices, feel free to open a PR with them in the README or another file.
+Many automated tools search the form for fields conveniently containing `name` or `id` or `email` or similar in the `input` tags. So we recommend you include a CSS-hidden form field with the name and id of email, with the real email address being stored in a field with a non-obvious name (probably best to not have the world email in there). When the button is clicked and the script prepares to send the JSON, check if there is a value in the hidden field. If there is, it's usually safe to assume it was filled in with a script (most users likely won't unhide a field in CSS and fill it in). Of course, other mitigation techniques are welcome, and if you have other best practices, feel free to open a PR with them in the README or another file.
 
 ## Testing
 
