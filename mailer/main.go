@@ -30,6 +30,7 @@ type MailerInput struct {
 	Email     string            `json:"email"`
 	Subject   string            `json:"subject"`
 	Body      string            `json:"body"`
+	Message   string            `json:"message"` // requests were made to make this be "message" instead, so we will use either
 	OtherData map[string]string `json:"otherData,omitempty"`
 }
 
@@ -114,11 +115,30 @@ func generateText(input *MailerInput) (subject, body string, err error) {
 	input.Email = sanitize(input.Email)
 	input.Subject = sanitize(input.Subject)
 	input.Body = sanitize(input.Body)
+	input.Message = sanitize(input.Message)
 
-	// make sure the basic fields are there
-	if input.Name == "" || input.Email == "" || input.Subject == "" || input.Body == "" {
-		err = errors.New("name, email, subject, and body are all required")
+	// converge message and body
+	if input.Body == "" && input.Message != "" {
+		// they sent in message
+		input.Body = input.Message
+	}
+
+	// change: only body is REALLY required; if others are blank, mark them as such
+	if input.Body == "" {
+		err = errors.New("the body / message is required")
 		return
+	}
+
+	if input.Name == "" {
+		input.Name = "NOT PROVIDED"
+	}
+
+	if input.Email == "" {
+		input.Email = "NOT PROVIDED"
+	}
+
+	if input.Subject == "" {
+		input.Subject = "Contact"
 	}
 
 	body = fmt.Sprintf("Hello!\nYou have received the following contact \nName: %s\nEmail: %s\nSubject: %s\n\n%s\n", input.Name, input.Email, input.Subject, input.Body)

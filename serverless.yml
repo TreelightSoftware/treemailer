@@ -1,15 +1,23 @@
 service: treemailer
-frameworkVersion: ">=1.28.0 <2.0.0"
 
+frameworkVersion: '2'
+
+# You will want to add more information in the provider and environment sections
 provider:
   name: aws
   runtime: go1.x
+  environment:
+    TREEMAILER_TO: ""
+    TREEMAILER_CC: ""
+    TREEMAILER_SITE_NAME: ""
+    TREEMAILER_MG_DOMAIN: ""
+    TREEMAILER_MG_KEY: ""
 
 package:
- exclude:
-   - ./**
- include:
-   - ./bin/**
+  exclude:
+    - ./**
+  include:
+    - ./bin/**
 
 functions:
   send:

@@ -7,6 +7,18 @@
 TreeMailer is a simple Go-based AWS Lambda tool powered by Serverless to provide a simple backend for form contact requests, such as in portfolios. This application sets up an AWS
 ( or your choice of FaaS provider) to take in some JSON, generate an email, and send it with MailGun.
 
+## Getting Started
+
+You must have serverless >= 2 installed. See [https://www.serverless.com/framework/docs/getting-started/](Serverless - Getting Started).
+
+You have two options.
+
+1) If you have an existing serverless install, you can grab the `mailer` directory and drop it in there. Then, update the Makefile as appropriate.
+
+2) You can checkout this directory and make your changes in here. This directory lacks the .serverless configuration, so you will need to configure serverless as you see fit.
+
+You can specify the values in the `serverless.yml` file or inject the environment variables into the Lambda. If you use the `serverless.yml` file, you can also plug them in from another resources using [https://www.serverless.com/blog/serverless-v1.2.0](Serverless Variables). Ideally, you would use something like `git-crypt` to protect these as well.
+
 ## Setup
 
 Global variables are used to setup the configuration. You can provide these either hard coded or you can set them through the environment.
