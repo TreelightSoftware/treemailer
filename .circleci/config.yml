@@ -4,7 +4,7 @@ orbs:
 jobs:
   build:
     docker:
-     - image: circleci/golang:1.12
+     - image: circleci/golang:1.14
     working_directory: /go/src/github.com/treelightsoftware/treemailer
     environment:
       TEST_RESULTS: /tmp/test-results
