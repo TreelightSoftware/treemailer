@@ -2,6 +2,7 @@
 
 build: gomodgen
 	export GO111MODULE=on
+	go mod tidy
 	env GOOS=linux go build -ldflags="-s -w" -o bin/mailer mailer/main.go
 	env GOOS=linux go build -ldflags="-s -w" -o bin/mailer mailer/main.go
 
