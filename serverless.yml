@@ -2,10 +2,13 @@ service: treemailer
 
 frameworkVersion: '2'
 
-# You will want to add more information in the provider and environment sections
+# You will want to add more information in the provider
 provider:
   name: aws
   runtime: go1.x
+  stage: treelight
+  apiGateway:
+    shouldStartNameWithService: true
   environment:
     TREEMAILER_TO: ""
     TREEMAILER_CC: ""
@@ -26,3 +29,4 @@ functions:
       - http:
           path: mail
           method: post
+          cors: true

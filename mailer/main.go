@@ -79,13 +79,29 @@ func sendError(message string, code int) (events.APIGatewayProxyResponse, error)
 	ret := []byte{}
 	response.Message = message
 	ret, _ = json.Marshal(response)
-	return events.APIGatewayProxyResponse{Body: string(ret), StatusCode: code}, nil
+	apiResponse := events.APIGatewayProxyResponse{
+		Body:       string(ret),
+		StatusCode: code,
+		Headers: map[string]string{
+			"Access-Control-Allow-Origin":      "*",
+			"Access-Control-Allow-Credentials": "true",
+		},
+	}
+	return apiResponse, nil
 }
 
 // sendSuccess sends a success message to the gateway
 func sendSuccess(retStruct interface{}) (events.APIGatewayProxyResponse, error) {
 	ret, _ := json.Marshal(retStruct)
-	return events.APIGatewayProxyResponse{Body: string(ret), StatusCode: 200}, nil
+	apiResponse := events.APIGatewayProxyResponse{
+		Body:       string(ret),
+		StatusCode: 200,
+		Headers: map[string]string{
+			"Access-Control-Allow-Origin":      "*",
+			"Access-Control-Allow-Credentials": "true",
+		},
+	}
+	return apiResponse, nil
 }
 
 // sendMail sends the mail and returns information about the message from mailgun

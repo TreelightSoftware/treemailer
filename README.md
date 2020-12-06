@@ -17,7 +17,9 @@ You have two options.
 
 2) You can checkout this directory and make your changes in here. This directory lacks the .serverless configuration, so you will need to configure serverless as you see fit.
 
-You can specify the values in the `serverless.yml` file or inject the environment variables into the Lambda. If you use the `serverless.yml` file, you can also plug them in from another resources using [https://www.serverless.com/blog/serverless-v1.2.0](Serverless Variables). Ideally, you would use something like `git-crypt` to protect these as well.
+You can specify the values in the `serverless.yml` file or inject the environment variables into the Lambda. If you use the `serverless.yml` file, you can also plug them in from another resources using [https://www.serverless.com/blog/serverless-v1.2.0](Serverless Variables). Ideally, you would use something like `git-crypt` to protect these as well. Regardless, how you get the required environment into the function is up to you.
+
+It should be noted that we turns on very loose CORS policies (allowing requests from any resource). If you won;t be calling this from a web-frontend, it would be wise to lock this down a bit.
 
 ## Setup
 
