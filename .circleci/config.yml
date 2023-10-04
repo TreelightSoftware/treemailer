@@ -7,7 +7,7 @@ jobs:
      - image: cimg/go:1.20.8
     working_directory: /$HOME/go/src/github.com/treelightsoftware/treemailer
     environment:
-      TEST_RESULTS: /tmp/test-results
+      TEST_RESULTS: /$HOME/tests
     steps:
       - checkout
       - run: mkdir -p $TEST_RESULTS
@@ -30,11 +30,11 @@ jobs:
             - "/go/pkg"
       
       - store_artifacts: # Upload test summary for display in Artifacts: https://circleci.com/docs/2.0/artifacts/
-          path: /tmp/test-results
+          path: /$HOME/tests
           destination: raw-test-output
 
       - store_test_results: # Upload test results for display in Test Summary: https://circleci.com/docs/2.0/collect-test-data/
-          path: /tmp/test-results
+          path: /$HOME/tests
       
       - codecov/upload:
-          file: /tmp/test-results/coverage.out
+          file: /$HOME/tests/coverage.out
