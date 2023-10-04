@@ -9,7 +9,7 @@ import (
 
 	"github.com/aws/aws-lambda-go/events"
 	"github.com/aws/aws-lambda-go/lambda"
-	"github.com/mailgun/mailgun-go"
+	mailgun "github.com/mailgun/mailgun-go"
 	"github.com/microcosm-cc/bluemonday"
 )
 

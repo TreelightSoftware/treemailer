@@ -1,10 +1,13 @@
-# github.com/aws/aws-lambda-go v1.10.0
+# github.com/aws/aws-lambda-go v1.41.0
 ## explicit
 github.com/aws/aws-lambda-go/events
 github.com/aws/aws-lambda-go/lambda
 github.com/aws/aws-lambda-go/lambda/handlertrace
 github.com/aws/aws-lambda-go/lambda/messages
 github.com/aws/aws-lambda-go/lambdacontext
+# github.com/aymerick/douceur v0.2.0
+github.com/aymerick/douceur/css
+github.com/aymerick/douceur/parser
 # github.com/davecgh/go-spew v1.1.1
 github.com/davecgh/go-spew/spew
 # github.com/facebookgo/ensure v0.0.0-20200202191622-63f1cf65ac4c
@@ -16,14 +19,17 @@ github.com/davecgh/go-spew/spew
 # github.com/gobuffalo/envy v1.7.0
 ## explicit
 github.com/gobuffalo/envy
+# github.com/gorilla/css v1.0.0
+github.com/gorilla/css/scanner
 # github.com/joho/godotenv v1.3.0
 github.com/joho/godotenv
 # github.com/mailgun/mailgun-go v2.0.0+incompatible
 ## explicit
 github.com/mailgun/mailgun-go
-# github.com/microcosm-cc/bluemonday v1.0.2
+# github.com/microcosm-cc/bluemonday v1.0.25
 ## explicit
 github.com/microcosm-cc/bluemonday
+github.com/microcosm-cc/bluemonday/css
 # github.com/onsi/ginkgo v1.14.1
 ## explicit
 # github.com/onsi/gomega v1.10.2
@@ -38,9 +44,11 @@ github.com/pmezard/go-difflib/difflib
 github.com/rogpeppe/go-internal/modfile
 github.com/rogpeppe/go-internal/module
 github.com/rogpeppe/go-internal/semver
-# github.com/stretchr/testify v1.3.0
+# github.com/stretchr/testify v1.7.2
 ## explicit
 github.com/stretchr/testify/assert
-# golang.org/x/net v0.0.0-20200520004742-59133d7f0dd7
+# golang.org/x/net v0.12.0
 golang.org/x/net/html
 golang.org/x/net/html/atom
+# gopkg.in/yaml.v3 v3.0.1
+gopkg.in/yaml.v3
