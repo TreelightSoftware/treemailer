@@ -4,8 +4,8 @@ orbs:
 jobs:
   build:
     docker:
-     - image: cimg/$HOME/go:1.20.8
-    working_directory: /go/src/github.com/treelightsoftware/treemailer
+     - image: cimg/go:1.20.8
+    working_directory: /$HOME/go/src/github.com/treelightsoftware/treemailer
     environment:
       TEST_RESULTS: /tmp/test-results
     steps:
